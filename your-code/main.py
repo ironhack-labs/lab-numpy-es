@@ -109,7 +109,6 @@ else:
     print("\nNo, 'a' y 'e' no son iguales\n")
 
 # 14. Identifica los valores máximos, mínimos y medios en d. Asigna esos valores a las variables "d_max", "d_min" y "d_mean"
-
 # [tu código aquí]
 d_max = d.max()
 d_min = d.min()
@@ -139,21 +138,20 @@ Nota: no necesitas usar Numpy en esta pregunta.
 for i, submatriz in enumerate(d):
     for j, fila in enumerate(submatriz):
         for k, dato in enumerate(fila):
-            if d_min < f[i][j][k] < d_mean:
+            if d_min < d[i][j][k] < d_mean:
                 f[i][j][k] = 25
-            elif d_mean < f[i][j][k] < d_max:
+            elif d_mean < d[i][j][k] < d_max:
                 f[i][j][k] = 75
-            elif f[i][j][k] == d_mean:
+            elif d[i][j][k] == d_mean:
                 f[i][j][k] = 50
-            elif f[i][j][k] == d_min:
+            elif d[i][j][k] == d_min:
                 f[i][j][k] = 0
-            elif f[i][j][k] == d_max:
+            elif d[i][j][k] == d_max:
                 f[i][j][k] = 100
 
 print(f"\nEsta es la nueva 'f' \n{f}\n")
 
-"""
-#17. Imprime d y f. ¿Tienes el f esperado?
+"""#17. Imprime d y f. ¿Tienes el f esperado?
 Por ejemplo, si tu d es:
 array([[[1.85836099, 1.67064465, 1.62576044, 1.40243961, 1.88454931],
         [1.75354326, 1.69403643, 1.36729252, 1.61415071, 1.12104981],
@@ -170,11 +168,11 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
 
        [[ 25.,  25.,  25.,  25., 100.],
         [ 75.,  75.,  75.,  75.,  75.],
-        [ 25.,  75.,   0.,  75.,  75.]]])
-"""
+        [ 25.,  75.,   0.,  75.,  75.]]])"""
 
 # [tu código aquí]
-
+print(f"\nEsta es la matriz 'd':\n{d}\n")
+print(f"\nEsta es la matriz 'f':\n{f}\n")
 
 """
 #18. Pregunta de bonificación: en lugar de usar números (es decir, 0, 25, 50, 75 y 100), ¿cómo usar valores de cadena
@@ -188,5 +186,21 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 De nuevo, no necesitas Numpy en esta pregunta.
 """
-
+f2 = np.copy(f)
 # [tu código aquí]
+aa = "A"
+for i, submatriz in enumerate(d):
+    for j, fila in enumerate(submatriz):
+        for k, dato in enumerate(fila):
+            if d_min < d[i][j][k] < d_mean:
+                f2[i][j][k] = aa
+            elif d_mean < d[i][j][k] < d_max:
+                f2[i][j][k] = aa
+            elif d[i][j][k] == d_mean:
+                f2[i][j][k] = aa
+            elif d[i][j][k] == d_min:
+                f2[i][j][k] = aa
+            elif d[i][j][k] == d_max:
+                f2[i][j][k] = aa
+
+print(f"\nEsta es la nueva 'f' \n{f2}\n")
