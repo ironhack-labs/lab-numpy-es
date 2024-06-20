@@ -1,72 +1,85 @@
 #1. Importa el paquete NUMPY bajo el nombre np.
 
-#[tu código aquí]
-
+import numpy as np
 
 #2. Imprime la versión de NUMPY y la configuración.
 
-#[tu código aquí]
-
+print(f"NumPy version: {np.__version__}")
+np.show_config()
 
 #3. Genera un array tridimensional de 2x3x5 con valores aleatorios. Asigna el array a la variable "a"
 # Desafío: hay al menos tres maneras fáciles que usan numpy para generar arrays aleatorios. ¿Cuántas formas puedes encontrar?
 
-#[tu código aquí]
+a = np.random.rand(2, 3, 5)
+print(f"\nEjercicio 3.1:\n{a}")
+a2 = np.random.randn(2, 3, 5)
+print(f"\nEjercicio 3.2:\n{a2}")
+a3 = np.random.randint(0, 10, size=(2, 3, 5))
+print(f"\nEjercicio 3.3:\n{a3}")
 
 #4. Imprime a.
 
-#[tu código aquí]
+print(f"\nEjercicio 4:\n{a}")
+
 #5. Crea un array tridimensional de 5x2x3 con todos los valores igual a 1.
 #Asigna el array a la variable "b"
 
-#[tu código aquí]
+b = np.ones((5, 2, 3))
 
 #6. Imprime b.
 
-#[tu código aquí]
+print(f"\nEjercicio 6:\n{b}")
 
 #7. ¿Tienen a y b el mismo tamaño? ¿Cómo lo demuestras en código Python?
 
-#[tu código aquí]
+a_size = a.size
+b_size = b.size
+print(f"\nEjercicio 7: {a_size==b_size}")
 
 #8. ¿Es posible sumar a y b? ¿Por qué sí o por qué no?
 
-#[tu código aquí]
-
+same_shape = a.shape == b.shape
+print(f"\nEjercicio 8: {same_shape} Para poder ser sumadas, dos matrices tienen que tener la misma forma (shape), en este caso 'a' y 'b' tienen formas distintas\nForma de a:{a.shape}\nForma de b: {b.shape}")
 
 #9. Transpone b para que tenga la misma estructura que a (es decir, se convierta en un array de 2x3x5). Asigna el array transpuesto a la variable "c".
 
-#[tu código aquí]
+c = b.transpose(1, 2, 0)
+print(f"\nEjercicio 9: Forma de c: {c.shape}")
 
 #10. Intenta sumar a y c. Ahora debería funcionar. Asigna la suma a la variable "d". Pero, ¿por qué funciona ahora?
 
-#[tu código aquí]
+d = a + c
+print(f"\nEjercicio 10: d = \n{d}\n 'a' y 'c' se pueden sumar porque tienen la misma forma (shape)")
 
 #11. Imprime a y d. ¿Notas la diferencia y la relación entre los dos arrays en términos de los valores? Explica.
 
-#[tu código aquí]
+print(f"\nEjercicio 11:\n{a}\n\n{d}\nLos valores de 'd' son 1 más que los valores de 'a' en la misma posición, se debe a que la matriz 'd' esta formada por todo 1")
 
 
 #12. Multiplica a y c. Asigna el resultado a e.
 
-#[tu código aquí]
+e = a*c
+print(f"\nEjercicio 12: e =\n{e}")
 
 
 #13. ¿Es e igual a a? ¿Por qué sí o por qué no?
 
-#[tu código aquí]
-
-
+print(f"\nEjercicio 13: a =\n{a}")
+print(f"\nEjercicio 13: e =\n{e}")
+print(f"\nEjercicio 13: a = e? \n{a==e}, 'e' se obtiene de multiplicar los valores de 'a' por 'c' (que son todo 1), por lo que salen los mismos valores")
 
 #14. Identifica los valores máximos, mínimos y medios en d. Asigna esos valores a las variables "d_max", "d_min" y "d_mean"
 
-#[tu código aquí]
-
+d_max = np.max(d)
+d_min = np.min(d)
+d_mean = np.mean(d)
+print(f"\nEjercicio 14: d_max = {d_max}, d_min = {d_min}, d_mean = {d_mean}")
 
 #15. Ahora queremos etiquetar los valores en d. Primero crea un array vacío "f" con la misma forma (es decir, 2x3x5) que d usando `np.empty`.
 
-#[tu código aquí]
-
+f = np.empty((2, 3, 5))
+print(f"\nEjercicio 15: f.shape = {f.shape}")
+print(f"\nEjercicio 15: f =\n{f}")
 
 """
 #16. Rellena los valores en f. Para cada valor en d, si es mayor que d_min pero menor que d_mean, asigna 25 al valor correspondiente en f.
@@ -78,10 +91,22 @@ Al final, f debería tener solo los siguientes valores: 0, 25, 50, 75 y 100.
 Nota: no necesitas usar Numpy en esta pregunta.
 """
 
-#[tu código aquí]
+for i in range(d.shape[0]):
+  for j in range(d.shape[1]):
+    for k in range(d.shape[2]):
+        if d[i, j, k] > d_min and d[i, j, k] < d_mean:
+                f[i, j, k] = 25
+        elif d[i, j, k] > d_mean and d[i, j, k] < d_max:
+                f[i, j, k] = 75
+        elif d[i, j, k] == d_mean:
+                f[i, j, k] = 50
+        elif d[i, j, k] == d_min:
+                f[i, j, k] = 0
+        elif d[i, j, k] == d_max:
+                f[i, j, k] = 100
 
-
-
+print(f"\nEjercicio 16: f =\n{f}")
+    
 
 """
 #17. Imprime d y f. ¿Tienes el f esperado?
@@ -104,8 +129,8 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
 
-#[tu código aquí]
-
+print(f"\nEjercicio 17: d =\n{d}")
+print(f"\nEjercicio 17: f =\n{f}")
 
 
 """
@@ -121,4 +146,23 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
 De nuevo, no necesitas Numpy en esta pregunta.
 """
 
-#[tu código aquí]
+f = np.empty((2, 3, 5), dtype=str)
+print(f"\nEjercicio 18: f.dtype = {f.dtype}; '<U1' indica que el tipo de dato de 'f' es una cadena unicode de longitud 1")
+print(f"\nEjercicio 18: f.shape = {f.shape}")
+print(f"\nEjercicio 18: f =\n{f}")
+
+for i in range(d.shape[0]):
+  for j in range(d.shape[1]):
+    for k in range(d.shape[2]):
+        if d[i, j, k] > d_min and d[i, j, k] < d_mean:
+                f[i, j, k] = "B"
+        elif d[i, j, k] > d_mean and d[i, j, k] < d_max:
+                f[i, j, k] = "D"
+        elif d[i, j, k] == d_mean:
+                f[i, j, k] = "C"
+        elif d[i, j, k] == d_min:
+                f[i, j, k] = "A"
+        elif d[i, j, k] == d_max:
+                f[i, j, k] = "E"
+
+print(f"\nEjercicio 18: f =\n{f}")
