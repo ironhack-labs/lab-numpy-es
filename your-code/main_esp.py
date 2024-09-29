@@ -34,7 +34,8 @@ print(f"Tienen el mismo tamaño a y b?\n{a.size == b.size}")
 
 #8. ¿Es posible sumar a y b? ¿Por qué sí o por qué no?
 
-print(a + b)
+print("print(a + b)")
+print("---------ValueError-------------- ")
 print("Sólo podemos sumar arrays que tengan la misma forma.")
 
 #9. Transpon b para que tenga la misma estructura que a (es decir, se convierta en un array de 2x3x5). Asigna el array transpuesto a la variable "c".
@@ -42,8 +43,8 @@ print("Sólo podemos sumar arrays que tengan la misma forma.")
 c = b.reshape(2,3,5)
 
 #10. Intenta sumar a y c. Ahora debería funcionar. Asigna la suma a la variable "d". Pero, ¿por qué funciona ahora?
-
-print(d = a + c)
+d = a + c
+print(d)
 print("Tienen la misma forma")
 
 #11. Imprime a y d. ¿Notas la diferencia y la relación entre los dos arrays en términos de los valores? Explica.
@@ -68,14 +69,14 @@ d_max = np.max(d)
 d_min = np.min(d)
 d_mean = np.mean(d)
 
-print(d)
+print(f"'d': {d}")
 print(f"d_max: {d_max}")
 print(f"d_min: {d_min}")
 print(f"d_mean: {d_mean}")
 
 #15. Ahora queremos etiquetar los valores en d. Primero crea un array vacío "f" con la misma forma (es decir, 2x3x5) que d usando `np.empty`.
 
-f = np.empty(2,3,5)
+f = np.empty((2,3,5))
 
 
 """
