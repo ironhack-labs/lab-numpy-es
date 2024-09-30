@@ -1,6 +1,6 @@
 #1. Importa el paquete NUMPY bajo el nombre np.
 
-#[tu código aquí]
+import numpy as np
 
 
 #2. Imprime la versión de NUMPY y la configuración.
