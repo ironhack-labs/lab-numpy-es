@@ -142,20 +142,19 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
 De nuevo, no necesitas Numpy en esta pregunta.
 """
 
-for i in range(len(f)):
-    for j in range(len(f[i])):
-        for k in range(len(f[i][j])):
-            element = f[i][j][k]            
-            if element > d_min and element < d_mean:
-                f[i][j][k] = "B"
-            elif element > d_mean and element < d_max:
-                f[i][j][k] = "D"
-            elif element == d_mean:
-                f[i][j][k] = "C"
-            elif element == d_min:
-                f[i][j][k] = "A"
-            elif element == d_max:
-                f[i][j][k] = "E"
+f_dict = {"A":0, "B":25, "C":50, "D":75, "E":100}
 
-
-print("No se pueden convertit floats a strings")
+def get_label(value, f_dict):
+    if value == f_dict["A"]:
+        return "A"
+    elif value == f_dict["B"]:
+        return "B"
+    elif value == f_dict["C"]:
+        return "C"
+    elif value == f_dict["D"]:
+        return "D"
+    elif value == f_dict["E"]:
+        return "E"
+    
+f_labeled = [[[get_label(value, f_dict) for value in row] for row in matrix] for matrix in f]
+f_labeled
