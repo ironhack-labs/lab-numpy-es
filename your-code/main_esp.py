@@ -1,5 +1,4 @@
 #1. Importa el paquete NUMPY bajo el nombre np.
-from builtins import range
 
 #[tu código aquí]
 import numpy as np
@@ -99,7 +98,10 @@ print("Mean values in (d):", d_mean)
 #15. Ahora queremos etiquetar los valores en d. Primero crea un array vacío "f" con la misma forma (es decir, 2x3x5) que d usando `np.empty`.
 
 #[tu código aquí]
-f = np.empty(d.shape)
+#f = np.empty(d.shape)
+
+f = np.zeros(d.shape, dtype=int)
+
 print("(f) shape is:", f.shape)
 print(f)
 
@@ -172,21 +174,22 @@ De nuevo, no necesitas Numpy en esta pregunta.
 """
 
 #[tu código aquí]
+
 string_array = np.empty(d.shape, dtype=object)
 
 for i in range(string_array.shape[0]):
     for j in range(string_array.shape[1]):
         for k in range(string_array.shape[2]):
             if d_min < d[i,j,k] < d_mean:
-                f[i,j,k] = "B"
+                string_array[i,j,k] = "B"
             elif d_mean < d[i,j,k] < d_max:
-                f[i,j,k] = "D"
+                string_array[i,j,k] = "D"
             elif d[i,j,k] == d_mean:
-                f[i,j,k] = "C"
+                string_array[i,j,k] = "C"
             elif d[i,j,k] == d_min:
-                f[i,j,k] = "A"
+                string_array[i,j,k] = "A"
             elif d[i,j,k] == d_max:
-                f[i,j,k] = "E"
+                string_array[i,j,k] = "E"
 
 print("The new array of (string_array) is:\n",string_array)
 
