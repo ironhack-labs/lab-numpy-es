@@ -15,19 +15,28 @@ print(np.show_config())
 #3. Genera un array tridimensional de 2x3x5 con valores aleatorios. Asigna el array a la variable "a"
 # Desafío: hay al menos tres maneras fáciles que usan numpy para generar arrays aleatorios. ¿Cuántas formas puedes encontrar?
 
+
 #[tu código aquí]
+
+a = np.random.randint(20, size=(2, 3, 5))
+
 
 #4. Imprime a.
 
 #[tu código aquí]
+print(a)
 #5. Crea un array tridimensional de 5x2x3 con todos los valores igual a 1.
 #Asigna el array a la variable "b"
 
+
+
 #[tu código aquí]
+b=np.ones((5, 2, 3))
 
 #6. Imprime b.
 
 #[tu código aquí]
+print(b)
 
 #7. ¿Tienen a y b el mismo tamaño? ¿Cómo lo demuestras en código Python?
 
