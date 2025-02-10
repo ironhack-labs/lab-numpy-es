@@ -1,11 +1,15 @@
 #1. Importa el paquete NUMPY bajo el nombre np.
-
 #[tu código aquí]
+import numpy as np
+
+
 
 
 #2. Imprime la versión de NUMPY y la configuración.
 
 #[tu código aquí]
+print("NumPy Version is : ",np.__version__)
+print(np.show_config())
 
 
 #3. Genera un array tridimensional de 2x3x5 con valores aleatorios. Asigna el array a la variable "a"
