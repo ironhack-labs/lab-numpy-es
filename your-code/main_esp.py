@@ -1,71 +1,111 @@
 #1. Importa el paquete NUMPY bajo el nombre np.
 
-#[tu código aquí]
+import numpy as np
 
 
 #2. Imprime la versión de NUMPY y la configuración.
-
-#[tu código aquí]
+print(np.version.version)
 
 
 #3. Genera un array tridimensional de 2x3x5 con valores aleatorios. Asigna el array a la variable "a"
 # Desafío: hay al menos tres maneras fáciles que usan numpy para generar arrays aleatorios. ¿Cuántas formas puedes encontrar?
 
-#[tu código aquí]
+a = np.random.randint(0, 100, (2, 3, 5)) 
+
 
 #4. Imprime a.
+print("ARRAY CON VALORES RANDOM DEL 1 AL 100:")
+print(a)
 
-#[tu código aquí]
 #5. Crea un array tridimensional de 5x2x3 con todos los valores igual a 1.
 #Asigna el array a la variable "b"
 
-#[tu código aquí]
+b = np.ones((5, 2, 3))
 
 #6. Imprime b.
-
-#[tu código aquí]
+print ("")
+print("ARRAY CON 1:")
+print(b)
 
 #7. ¿Tienen a y b el mismo tamaño? ¿Cómo lo demuestras en código Python?
 
-#[tu código aquí]
+def numpy_info(arr1, arr2):
+        if arr1.ndim == arr2.ndim and arr1.size == arr2.size:
+                return True
+        else:
+                return False
+print("")
+print("Los dos arrays tiene el mismo tamaño?:", numpy_info(a,b))
 
 #8. ¿Es posible sumar a y b? ¿Por qué sí o por qué no?
 
-#[tu código aquí]
-
+"""
+Para poder sumarlo deben tener la misma forma, (shape)
+"""
+print("")
+if a.shape == b.shape:
+        print("Se pueden sumar")
+else:
+        print("No se pueden sumar")
+"""
+Vemos que el resultado de esto es que lso dos array no se pueden sumar
+"""
 
 #9. Transpone b para que tenga la misma estructura que a (es decir, se convierta en un array de 2x3x5). Asigna el array transpuesto a la variable "c".
 
-#[tu código aquí]
+# Transponemos b para que tenga la misma estructura de (2, 3, 5)
+c = b.transpose(1, 2, 0)
+print("Array c (transpuesto):")
+print(c)
+
 
 #10. Intenta sumar a y c. Ahora debería funcionar. Asigna la suma a la variable "d". Pero, ¿por qué funciona ahora?
 
-#[tu código aquí]
+# Sumamos a y c
+d = a + c
+print("Suma de a y c (d):")
+print(d)
+
 
 #11. Imprime a y d. ¿Notas la diferencia y la relación entre los dos arrays en términos de los valores? Explica.
 
-#[tu código aquí]
+print("Array a:")
+print(a)
+print("Array d (resultado de la suma):")
+print(d)
 
 
 #12. Multiplica a y c. Asigna el resultado a e.
 
-#[tu código aquí]
+e = a * c
+print("Multiplicación de a y c (e):")
+print(e)
 
 
 #13. ¿Es e igual a a? ¿Por qué sí o por qué no?
 
-#[tu código aquí]
+print("¿Es e igual a a?:", np.array_equal(a, e))
 
 
 
 #14. Identifica los valores máximos, mínimos y medios en d. Asigna esos valores a las variables "d_max", "d_min" y "d_mean"
 
-#[tu código aquí]
+# Identificamos los valores máximos, mínimos y medios en d
+d_max = np.max(d)
+d_min = np.min(d)
+d_mean = np.mean(d)
+
+print(f"Máximo de d: {d_max}")
+print(f"Mínimo de d: {d_min}")
+print(f"Promedio de d: {d_mean}")
+
 
 
 #15. Ahora queremos etiquetar los valores en d. Primero crea un array vacío "f" con la misma forma (es decir, 2x3x5) que d usando `np.empty`.
 
-#[tu código aquí]
+f = np.empty_like(d)
+print("Array vacío f:")
+print(f)
 
 
 """
@@ -78,7 +118,24 @@ Al final, f debería tener solo los siguientes valores: 0, 25, 50, 75 y 100.
 Nota: no necesitas usar Numpy en esta pregunta.
 """
 
-#[tu código aquí]
+# Rellenamos f según las condiciones
+for i in range(f.shape[0]):
+    for j in range(f.shape[1]):
+        for k in range(f.shape[2]):
+            if d[i, j, k] == d_min:
+                f[i, j, k] = 0
+            elif d[i, j, k] == d_max:
+                f[i, j, k] = 100
+            elif d[i, j, k] == d_mean:
+                f[i, j, k] = 50
+            elif d_min < d[i, j, k] < d_mean:
+                f[i, j, k] = 25
+            elif d_mean < d[i, j, k] < d_max:
+                f[i, j, k] = 75
+
+print("Array f (etiquetado):")
+print(f)
+
 
 
 
@@ -104,7 +161,10 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
 
-#[tu código aquí]
+print("Array d:")
+print(d)
+print("Array f (etiquetado):")
+print(f)
 
 
 
@@ -121,4 +181,22 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
 De nuevo, no necesitas Numpy en esta pregunta.
 """
 
-#[tu código aquí]
+# Usamos valores de cadena en lugar de números
+f_strings = np.empty_like(f, dtype=object)
+
+for i in range(f_strings.shape[0]):
+    for j in range(f_strings.shape[1]):
+        for k in range(f_strings.shape[2]):
+            if d[i, j, k] == d_min:
+                f_strings[i, j, k] = 'A'
+            elif d[i, j, k] == d_max:
+                f_strings[i, j, k] = 'E'
+            elif d[i, j, k] == d_mean:
+                f_strings[i, j, k] = 'C'
+            elif d_min < d[i, j, k] < d_mean:
+                f_strings[i, j, k] = 'B'
+            elif d_mean < d[i, j, k] < d_max:
+                f_strings[i, j, k] = 'D'
+
+print("Array f (etiquetado con cadenas):")
+print(f_strings)
