@@ -41,6 +41,7 @@ print(b)
 #7. ¿Tienen a y b el mismo tamaño? ¿Cómo lo demuestras en código Python?
 
 #[tu código aquí]
+print(np.array_equal(a,b))
 
 #8. ¿Es posible sumar a y b? ¿Por qué sí o por qué no?
 
