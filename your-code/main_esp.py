@@ -49,7 +49,7 @@ print(np.array_equal(a,b))
 
 def can_be_summed(a,b):
         if a.shape==b.shape:
-                return a+b
+                return print(a+b)
         else:
                 return print("Arrays de dos tamaños distintos no se pueden sumar")
 can_be_summed(a,b)
@@ -60,14 +60,25 @@ can_be_summed(a,b)
 
 #[tu código aquí]
 
+c=b.transpose(1,2,0)
+
+
 #10. Intenta sumar a y c. Ahora debería funcionar. Asigna la suma a la variable "d". Pero, ¿por qué funciona ahora?
 
+
 #[tu código aquí]
+can_be_summed(a,c)
+d=a+c
 
 #11. Imprime a y d. ¿Notas la diferencia y la relación entre los dos arrays en términos de los valores? Explica.
 
 #[tu código aquí]
+print("a")
+print(a)
+print("d")
+print(d)
 
+#I can see that the sum of a and c has dots not commas. I have created c from b and b was originally created using ones() method which defaults to float data type, hence the dots
 
 #12. Multiplica a y c. Asigna el resultado a e.
 
