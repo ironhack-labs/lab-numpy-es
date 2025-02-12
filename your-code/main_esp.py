@@ -1,71 +1,117 @@
 #1. Importa el paquete NUMPY bajo el nombre np.
-
 #[tu código aquí]
+import numpy as np
+
+
 
 
 #2. Imprime la versión de NUMPY y la configuración.
 
 #[tu código aquí]
+print("NumPy Version is : ",np.__version__)
+print(np.show_config())
 
 
 #3. Genera un array tridimensional de 2x3x5 con valores aleatorios. Asigna el array a la variable "a"
 # Desafío: hay al menos tres maneras fáciles que usan numpy para generar arrays aleatorios. ¿Cuántas formas puedes encontrar?
 
+
 #[tu código aquí]
+
+a = np.random.randint(20, size=(2, 3, 5))
+
 
 #4. Imprime a.
 
 #[tu código aquí]
+print(a)
 #5. Crea un array tridimensional de 5x2x3 con todos los valores igual a 1.
 #Asigna el array a la variable "b"
 
+
+
 #[tu código aquí]
+b=np.ones((5, 2, 3))
 
 #6. Imprime b.
 
 #[tu código aquí]
+print(b)
 
 #7. ¿Tienen a y b el mismo tamaño? ¿Cómo lo demuestras en código Python?
 
 #[tu código aquí]
+print(np.array_equal(a,b))
 
 #8. ¿Es posible sumar a y b? ¿Por qué sí o por qué no?
 
 #[tu código aquí]
+
+def can_be_summed(a,b):
+        if a.shape==b.shape:
+                return print(a+b)
+        else:
+                return print("Arrays de dos tamaños distintos no se pueden sumar")
+can_be_summed(a,b)
+
 
 
 #9. Transpone b para que tenga la misma estructura que a (es decir, se convierta en un array de 2x3x5). Asigna el array transpuesto a la variable "c".
 
 #[tu código aquí]
 
+c=b.transpose(1,2,0)
+
+
 #10. Intenta sumar a y c. Ahora debería funcionar. Asigna la suma a la variable "d". Pero, ¿por qué funciona ahora?
 
+
 #[tu código aquí]
+can_be_summed(a,c)
+d=a+c
 
 #11. Imprime a y d. ¿Notas la diferencia y la relación entre los dos arrays en términos de los valores? Explica.
 
 #[tu código aquí]
+print("a")
+print(a)
+print("d")
+print(d)
 
+#I can see that the sum of a and c has dots not commas. I have created c from b and b was originally created using ones() method which defaults to float data type, hence the dots
 
 #12. Multiplica a y c. Asigna el resultado a e.
 
 #[tu código aquí]
+e=a*c
+print("e")
+print(e)
 
 
 #13. ¿Es e igual a a? ¿Por qué sí o por qué no?
 
 #[tu código aquí]
+print(np.array_equal(a,e))
+
+
+#they're equal cause they have the same structure and value, but they're different cause they have differernt data types a has int and e has float
 
 
 
 #14. Identifica los valores máximos, mínimos y medios en d. Asigna esos valores a las variables "d_max", "d_min" y "d_mean"
 
 #[tu código aquí]
+d_max=d.max()
+d_min=d.min()
+d_mean=d.mean()
+print(d_max,d_min, d_mean)
 
 
 #15. Ahora queremos etiquetar los valores en d. Primero crea un array vacío "f" con la misma forma (es decir, 2x3x5) que d usando `np.empty`.
 
 #[tu código aquí]
+f=np.empty([2,3,5])
+
 
 
 """
@@ -80,7 +126,8 @@ Nota: no necesitas usar Numpy en esta pregunta.
 
 #[tu código aquí]
 
-
+f=np.where((d>d_min)&(d<d_mean),25,np.where((d>d_mean)&(d<d_max),75,np.where((d=d_min),0)))
+print(f)
 
 
 """
