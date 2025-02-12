@@ -83,11 +83,18 @@ print(d)
 #12. Multiplica a y c. Asigna el resultado a e.
 
 #[tu código aquí]
+e=a*c
+print("e")
+print(e)
 
 
 #13. ¿Es e igual a a? ¿Por qué sí o por qué no?
 
 #[tu código aquí]
+print(np.array_equal(a,e))
+
+
+#they're equal cause they have the same structure and value, but they're different cause they have differernt data types a has int and e has float
 
 
 
