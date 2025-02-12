@@ -47,6 +47,14 @@ print(np.array_equal(a,b))
 
 #[tu código aquí]
 
+def can_be_summed(a,b):
+        if a.shape==b.shape:
+                return a+b
+        else:
+                return print("Arrays de dos tamaños distintos no se pueden sumar")
+can_be_summed(a,b)
+
+
 
 #9. Transpone b para que tenga la misma estructura que a (es decir, se convierta en un array de 2x3x5). Asigna el array transpuesto a la variable "c".
 
