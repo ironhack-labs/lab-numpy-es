@@ -1,71 +1,89 @@
 #1. Importa el paquete NUMPY bajo el nombre np.
 
-#[tu código aquí]
-
+import numpy as np
 
 #2. Imprime la versión de NUMPY y la configuración.
 
-#[tu código aquí]
-
+print(np.version.version)
+#print(np.show_config())
 
 #3. Genera un array tridimensional de 2x3x5 con valores aleatorios. Asigna el array a la variable "a"
 # Desafío: hay al menos tres maneras fáciles que usan numpy para generar arrays aleatorios. ¿Cuántas formas puedes encontrar?
 
-#[tu código aquí]
+a = np.random.random((2, 3, 5))
 
 #4. Imprime a.
 
-#[tu código aquí]
+print(a)
+
 #5. Crea un array tridimensional de 5x2x3 con todos los valores igual a 1.
 #Asigna el array a la variable "b"
 
-#[tu código aquí]
+b = np.ones((5, 2, 3))
 
 #6. Imprime b.
 
-#[tu código aquí]
+print(b)
 
 #7. ¿Tienen a y b el mismo tamaño? ¿Cómo lo demuestras en código Python?
 
-#[tu código aquí]
+print(a.shape == b.shape)
 
 #8. ¿Es posible sumar a y b? ¿Por qué sí o por qué no?
 
-#[tu código aquí]
+try:
+   np.add(a, b)
+   print("Es posible sumar a y b")
+except ValueError:
+   print("No es posible sumar a y b porque tienen diferentes formas")
 
 
 #9. Transpone b para que tenga la misma estructura que a (es decir, se convierta en un array de 2x3x5). Asigna el array transpuesto a la variable "c".
 
-#[tu código aquí]
+c = b.transpose(1, 2, 0)
 
 #10. Intenta sumar a y c. Ahora debería funcionar. Asigna la suma a la variable "d". Pero, ¿por qué funciona ahora?
 
-#[tu código aquí]
+d = a + c
+# Funciona porque ahora a y c tienen la misma forma (2x3x5).
 
 #11. Imprime a y d. ¿Notas la diferencia y la relación entre los dos arrays en términos de los valores? Explica.
 
-#[tu código aquí]
+print("Array a:")
+print(a)
+print("\nArray d:")
+print(d)
+print("\nLa diferencia entre a y d es que d es el resultado de sumar a y c, donde c es una matriz de unos transpuesta para coincidir con la forma de a. Por lo tanto, cada elemento de d es el valor correspondiente de a incrementado en 1.")
+print(a)
+print("\nArray d:")
+print(d)
+print("\nLa diferencia entre los dos arrays es que d es el resultado de sumar a y c, donde c es un array de unos con la misma forma que a. Por lo tanto, cada elemento en d es mayor en 1 que el elemento correspondiente en a.")
 
 
 #12. Multiplica a y c. Asigna el resultado a e.
 
-#[tu código aquí]
+e = a * c
 
 
 #13. ¿Es e igual a a? ¿Por qué sí o por qué no?
 
-#[tu código aquí]
+print(np.array_equal(e, a))
+print("e no es igual a a porque e es el resultado de multiplicar a y c, donde c es una matriz de unos transpuesta para coincidir con la forma de a. Por lo tanto, cada elemento de e es igual al valor correspondiente de a multiplicado por 1, lo que no cambia los valores de a.")
 
 
 
 #14. Identifica los valores máximos, mínimos y medios en d. Asigna esos valores a las variables "d_max", "d_min" y "d_mean"
 
-#[tu código aquí]
+d_max = np.max(d)
+d_min = np.min(d)
+d_mean = np.mean(d)
+d_min = d.min()
+d_mean = d.mean()
 
 
 #15. Ahora queremos etiquetar los valores en d. Primero crea un array vacío "f" con la misma forma (es decir, 2x3x5) que d usando `np.empty`.
 
-#[tu código aquí]
+f = np.empty(d.shape)
 
 
 """
@@ -78,7 +96,19 @@ Al final, f debería tener solo los siguientes valores: 0, 25, 50, 75 y 100.
 Nota: no necesitas usar Numpy en esta pregunta.
 """
 
-#[tu código aquí]
+for i in range(d.shape[0]):
+    for j in range(d.shape[1]):
+        for k in range(d.shape[2]):
+            if d[i, j, k] == d_min:
+                f[i, j, k] = 0
+            elif d[i, j, k] == d_max:
+                f[i, j, k] = 100
+            elif d[i, j, k] == d_mean:
+                f[i, j, k] = 50
+            elif d_min < d[i, j, k] < d_mean:
+                f[i, j, k] = 25
+            elif d_mean < d[i, j, k] < d_max:
+                f[i, j, k] = 75
 
 
 
@@ -104,8 +134,35 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
 
-#[tu código aquí]
+# Imprime d y f
+print("Array d:")
+print(d)
+print("\nArray f:")
+print(f)
 
+# Bonus: Usar valores de cadena en lugar de números
+f_str = np.empty(d.shape, dtype=str)
+for i in range(d.shape[0]):
+    for j in range(d.shape[1]):
+        for k in range(d.shape[2]):
+            if d[i, j, k] == d_min:
+                f_str[i, j, k] = 'A'
+            elif d[i, j, k] == d_max:
+                f_str[i, j, k] = 'E'
+            elif d[i, j, k] == d_mean:
+                f_str[i, j, k] = 'C'
+            elif d_min < d[i, j, k] < d_mean:
+                f_str[i, j, k] = 'B'
+            elif d_mean < d[i, j, k] < d_max:
+                f_str[i, j, k] = 'D'
+
+# Imprime f_str
+print("\nArray f_str:")
+print(f_str)
+print("Array d:")
+print(d)
+print("\nArray f:")
+print(f)
 
 
 """
@@ -121,4 +178,22 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
 De nuevo, no necesitas Numpy en esta pregunta.
 """
 
-#[tu código aquí]
+# Bonus: Usar valores de cadena en lugar de números
+f_str = np.empty(d.shape, dtype=str)
+for i in range(d.shape[0]):
+    for j in range(d.shape[1]):
+        for k in range(d.shape[2]):
+            if d[i, j, k] == d_min:
+                f_str[i, j, k] = 'A'
+            elif d[i, j, k] == d_max:
+                f_str[i, j, k] = 'E'
+            elif d[i, j, k] == d_mean:
+                f_str[i, j, k] = 'C'
+            elif d_min < d[i, j, k] < d_mean:
+                f_str[i, j, k] = 'B'
+            elif d_mean < d[i, j, k] < d_max:
+                f_str[i, j, k] = 'D'
+
+# Imprime f_str
+print("\nArray f_str:")
+print(f_str)
