@@ -1,71 +1,75 @@
-#1. Importa el paquete NUMPY bajo el nombre np.
+# 1. Importa el paquete NUMPY bajo el nombre np.
+import numpy as np
 
-#[tu código aquí]
-
-
-#2. Imprime la versión de NUMPY y la configuración.
-
-#[tu código aquí]
+# 2. Imprime la versión de NUMPY y la configuración.
+print(np.__version__)
+print(np.show_config())
 
 
-#3. Genera un array tridimensional de 2x3x5 con valores aleatorios. Asigna el array a la variable "a"
+# 3. Genera un array tridimensional de 2x3x5 con valores aleatorios. Asigna el array a la variable "a"
 # Desafío: hay al menos tres maneras fáciles que usan numpy para generar arrays aleatorios. ¿Cuántas formas puedes encontrar?
+a = np.random.random((2, 3, 5))
 
-#[tu código aquí]
+# 4. Imprime a.
+print(a)
 
-#4. Imprime a.
+# 5. Crea un array tridimensional de 5x2x3 con todos los valores igual a 1.
+# Asigna el array a la variable "b"
+b = np.ones((5, 2, 3))
 
-#[tu código aquí]
-#5. Crea un array tridimensional de 5x2x3 con todos los valores igual a 1.
-#Asigna el array a la variable "b"
-
-#[tu código aquí]
-
-#6. Imprime b.
-
-#[tu código aquí]
-
-#7. ¿Tienen a y b el mismo tamaño? ¿Cómo lo demuestras en código Python?
-
-#[tu código aquí]
-
-#8. ¿Es posible sumar a y b? ¿Por qué sí o por qué no?
-
-#[tu código aquí]
+# 6. Imprime b.
+print(b)
 
 
-#9. Transpone b para que tenga la misma estructura que a (es decir, se convierta en un array de 2x3x5). Asigna el array transpuesto a la variable "c".
-
-#[tu código aquí]
-
-#10. Intenta sumar a y c. Ahora debería funcionar. Asigna la suma a la variable "d". Pero, ¿por qué funciona ahora?
-
-#[tu código aquí]
-
-#11. Imprime a y d. ¿Notas la diferencia y la relación entre los dos arrays en términos de los valores? Explica.
-
-#[tu código aquí]
+# 7. ¿Tienen a y b el mismo tamaño? ¿Cómo lo demuestras en código Python?
+print(a.shape == b.shape)
 
 
-#12. Multiplica a y c. Asigna el resultado a e.
-
-#[tu código aquí]
-
-
-#13. ¿Es e igual a a? ¿Por qué sí o por qué no?
-
-#[tu código aquí]
+# 8. ¿Es posible sumar a y b? ¿Por qué sí o por qué no?
+try:
+    s = a + b
+    print("Sum of a and b:", s)
+except ValueError:
+    print("Sum of a and b is not possible")
 
 
+# 9. Transpone b para que tenga la misma estructura que a (es decir, se convierta en un array de 2x3x5). Asigna el array transpuesto a la variable "c".
+c = np.transpose(b, (1, 2, 0))
+print(c)
+print(c.shape)
 
-#14. Identifica los valores máximos, mínimos y medios en d. Asigna esos valores a las variables "d_max", "d_min" y "d_mean"
 
-#[tu código aquí]
+# 10. Intenta sumar a y c. Ahora debería funcionar. Asigna la suma a la variable "d". Pero, ¿por qué funciona ahora?
+d = a + c
+print(d)
+print(d.shape)
 
 
-#15. Ahora queremos etiquetar los valores en d. Primero crea un array vacío "f" con la misma forma (es decir, 2x3x5) que d usando `np.empty`.
+# 11. Imprime a y d. ¿Notas la diferencia y la relación entre los dos arrays en términos de los valores? Explica.
+print(a)
+print(d)
 
-#[tu código aquí]
+
+# 12. Multiplica a y c. Asigna el resultado a e.
+e = a * c
+print(e)
+print(e.shape)
+
+
+# 13. ¿Es e igual a a? ¿Por qué sí o por qué no?
+print(e == a)
+
+
+# 14. Identifica los valores máximos, mínimos y medios en d. Asigna esos valores a las variables "d_max", "d_min" y "d_mean"
+d_max = np.max(d)
+d_min = np.min(d)
+d_mean = np.mean(d)
+
+
+# 15. Ahora queremos etiquetar los valores en d. Primero crea un array vacío "f" con la misma forma (es decir, 2x3x5) que d usando `np.empty`.
+f = np.empty(d.shape)
+
+
 
 
 """
@@ -77,9 +81,11 @@ Asigna 100 al valor correspondiente(s) en f para d_max en d.
 Al final, f debería tener solo los siguientes valores: 0, 25, 50, 75 y 100.
 Nota: no necesitas usar Numpy en esta pregunta.
 """
-
-#[tu código aquí]
-
+f[d == d_min] = 0
+f[d == d_max] = 100
+f[d == d_mean] = 50
+f[(d > d_min) & (d < d_mean)] = 25
+f[(d > d_mean) & (d < d_max)] = 75
 
 
 
@@ -103,8 +109,8 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 75.,  75.,  75.,  75.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
-
-#[tu código aquí]
+print(d)
+print(f)
 
 
 
@@ -121,4 +127,4 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
 De nuevo, no necesitas Numpy en esta pregunta.
 """
 
-#[tu código aquí]
+
