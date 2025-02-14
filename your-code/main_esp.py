@@ -1,71 +1,96 @@
 #1. Importa el paquete NUMPY bajo el nombre np.
 
 #[tu código aquí]
-
+import numpy as np
 
 #2. Imprime la versión de NUMPY y la configuración.
 
 #[tu código aquí]
 
 
+print(np.__version__)
+
 #3. Genera un array tridimensional de 2x3x5 con valores aleatorios. Asigna el array a la variable "a"
 # Desafío: hay al menos tres maneras fáciles que usan numpy para generar arrays aleatorios. ¿Cuántas formas puedes encontrar?
 
 #[tu código aquí]
+a=np.random.randint(3,size=(2,3,5))
 
 #4. Imprime a.
 
 #[tu código aquí]
+
+print (f'a={a}')
+
 #5. Crea un array tridimensional de 5x2x3 con todos los valores igual a 1.
 #Asigna el array a la variable "b"
 
 #[tu código aquí]
-
+b=np.ones((5,2,3))
 #6. Imprime b.
 
 #[tu código aquí]
+print (f'b={b}')
 
 #7. ¿Tienen a y b el mismo tamaño? ¿Cómo lo demuestras en código Python?
 
 #[tu código aquí]
+if len(a)==len(b):
+        print (True)
+else:
+        print(False)
+
 
 #8. ¿Es posible sumar a y b? ¿Por qué sí o por qué no?
 
 #[tu código aquí]
-
+'''No se pueden sumar porque tienen dimensiones diferentes'''
 
 #9. Transpone b para que tenga la misma estructura que a (es decir, se convierta en un array de 2x3x5). Asigna el array transpuesto a la variable "c".
 
 #[tu código aquí]
-
+c= np.reshape(b, (2,3,5))
+print(f'c={c}')
 #10. Intenta sumar a y c. Ahora debería funcionar. Asigna la suma a la variable "d". Pero, ¿por qué funciona ahora?
 
 #[tu código aquí]
+d=a+c
+print(f'd={d}\n')
 
 #11. Imprime a y d. ¿Notas la diferencia y la relación entre los dos arrays en términos de los valores? Explica.
 
 #[tu código aquí]
+print (f'a={a}\n')
+print(f'd={d}\n')
 
-
+'''Los valores de a son tipo int y los de d son tipo float'''
 #12. Multiplica a y c. Asigna el resultado a e.
 
 #[tu código aquí]
-
+e=a*c
+print(f'e={e}\n')
 
 #13. ¿Es e igual a a? ¿Por qué sí o por qué no?
 
 #[tu código aquí]
 
-
+'''En cuanto a valor absoluto de los números que contine si pero los tipos son diferentes en a son enteros y en e son float'''
 
 #14. Identifica los valores máximos, mínimos y medios en d. Asigna esos valores a las variables "d_max", "d_min" y "d_mean"
 
 #[tu código aquí]
 
+d_max=np.max(d)
+d_min=np.min(d)
+d_mean=np.mean(d)
+
 
 #15. Ahora queremos etiquetar los valores en d. Primero crea un array vacío "f" con la misma forma (es decir, 2x3x5) que d usando `np.empty`.
 
 #[tu código aquí]
+
+f=np.empty([2,3,5],)
+print(f'f={f}')
 
 
 """
@@ -79,8 +104,19 @@ Nota: no necesitas usar Numpy en esta pregunta.
 """
 
 #[tu código aquí]
-
-
+for a in range(2):
+        for b in range(3):
+                for c in range (5):
+                        if d[a][b][c]>d_min and d[a][b][c]<d_mean:
+                                f[a][b][c]=25
+                        elif d[a][b][c]>d_mean and d[a][b][c]<d_max:
+                                f[a][b][c]=75
+                        elif d[a][b][c]==d_mean:
+                                f[a][b][c]=50
+                        elif d[a][b][c]==d_min:
+                                f[a][b][c]=0
+                        elif d[a][b][c]==d_max:
+                                f[a][b][c]=100
 
 
 """
@@ -106,7 +142,7 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
 
 #[tu código aquí]
 
-
+print(f'f1={f}')
 
 """
 #18. Pregunta de bonificación: en lugar de usar números (es decir, 0, 25, 50, 75 y 100), ¿cómo usar valores de cadena 
