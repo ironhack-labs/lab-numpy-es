@@ -1,46 +1,80 @@
 #1. Importa el paquete NUMPY bajo el nombre np.
 
+
 #[tu código aquí]
 
+import numpy as np
 
 #2. Imprime la versión de NUMPY y la configuración.
 
-#[tu código aquí]
 
+# Imprimir versión de NUMPY
+print("Versión de NUMPY:", np.__version__)
+
+# Imprimir configuración de NUMPY
+np.show_config()
 
 #3. Genera un array tridimensional de 2x3x5 con valores aleatorios. Asigna el array a la variable "a"
 # Desafío: hay al menos tres maneras fáciles que usan numpy para generar arrays aleatorios. ¿Cuántas formas puedes encontrar?
 
 #[tu código aquí]
 
-#4. Imprime a.
+import numpy as np
 
-#[tu código aquí]
+a = np.random.random((2, 3, 5))
+
+#4. Imprime a.
+print(a)
+
 #5. Crea un array tridimensional de 5x2x3 con todos los valores igual a 1.
 #Asigna el array a la variable "b"
 
 #[tu código aquí]
 
-#6. Imprime b.
+import numpy as np
 
-#[tu código aquí]
+# Crear un array tridimensional de 5x2x3 con todos los valores igual a 1
+b = np.ones((5, 2, 3))
+
+#6. Imprime b.
+print(b)
+
 
 #7. ¿Tienen a y b el mismo tamaño? ¿Cómo lo demuestras en código Python?
 
 #[tu código aquí]
 
+# Comprobar si a y b tienen el mismo tamaño
+same_size = a.size == b.size
+
+# Imprimir los tamaños y el resultado de la comparación
+print(f"Tamaño de a: {a.size}")
+print(f"Tamaño de b: {b.size}")
+print(f"¿Tienen a y b el mismo tamaño? {same_size}")
+
 #8. ¿Es posible sumar a y b? ¿Por qué sí o por qué no?
 
 #[tu código aquí]
-
+#Tienen diferentes dimensiones en su definición por lo que no es posible sumarlos
 
 #9. Transpone b para que tenga la misma estructura que a (es decir, se convierta en un array de 2x3x5). Asigna el array transpuesto a la variable "c".
 
 #[tu código aquí]
+import numpy as np
+
+c = np.transpose(b, (1, 2, 0))
+
+print(c)
 
 #10. Intenta sumar a y c. Ahora debería funcionar. Asigna la suma a la variable "d". Pero, ¿por qué funciona ahora?
 
 #[tu código aquí]
+
+d = a + c
+
+print(d)
+
+#En NumPy, para que dos arrays se puedan sumar, deben tener la misma forma o ser compatibles según las reglas de broadcasting. Al transponer b para que tenga la forma (2, 3, 5), se convierte en un array compatible con a para la operación de suma.
 
 #11. Imprime a y d. ¿Notas la diferencia y la relación entre los dos arrays en términos de los valores? Explica.
 
@@ -51,6 +85,10 @@
 
 #[tu código aquí]
 
+e = a * c
+
+
+print(e)
 
 #13. ¿Es e igual a a? ¿Por qué sí o por qué no?
 
@@ -61,6 +99,10 @@
 #14. Identifica los valores máximos, mínimos y medios en d. Asigna esos valores a las variables "d_max", "d_min" y "d_mean"
 
 #[tu código aquí]
+d_max = np.max(d)
+d_min = np.min(d)
+d_mean = np.mean(d)
+
 
 
 #15. Ahora queremos etiquetar los valores en d. Primero crea un array vacío "f" con la misma forma (es decir, 2x3x5) que d usando `np.empty`.
