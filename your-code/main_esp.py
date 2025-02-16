@@ -1,60 +1,83 @@
 #1. Importa el paquete NUMPY bajo el nombre np.
 
 #[tu código aquí]
+import numpy as np
 
 
 #2. Imprime la versión de NUMPY y la configuración.
 
 #[tu código aquí]
-
+print(np.__version__)
+np.show_config()
 
 #3. Genera un array tridimensional de 2x3x5 con valores aleatorios. Asigna el array a la variable "a"
 # Desafío: hay al menos tres maneras fáciles que usan numpy para generar arrays aleatorios. ¿Cuántas formas puedes encontrar?
 
 #[tu código aquí]
+a = np.random.randint(10, size = (2, 3, 5))
 
 #4. Imprime a.
+print(a)
 
 #[tu código aquí]
 #5. Crea un array tridimensional de 5x2x3 con todos los valores igual a 1.
 #Asigna el array a la variable "b"
 
 #[tu código aquí]
+b = np.ones((5, 2, 3))
+
 
 #6. Imprime b.
 
 #[tu código aquí]
+print(b)
+
 
 #7. ¿Tienen a y b el mismo tamaño? ¿Cómo lo demuestras en código Python?
 
 #[tu código aquí]
+same_size = (a.size == b.size)
+print(same_size)
+
+    
 
 #8. ¿Es posible sumar a y b? ¿Por qué sí o por qué no?
 
 #[tu código aquí]
+#No podemos sumarlas porque son arrays con diferentes shapes.
 
 
 #9. Transpone b para que tenga la misma estructura que a (es decir, se convierta en un array de 2x3x5). Asigna el array transpuesto a la variable "c".
 
 #[tu código aquí]
+c = np.reshape(b, (2, 3, 5))
 
 #10. Intenta sumar a y c. Ahora debería funcionar. Asigna la suma a la variable "d". Pero, ¿por qué funciona ahora?
 
 #[tu código aquí]
+d = a + c
 
 #11. Imprime a y d. ¿Notas la diferencia y la relación entre los dos arrays en términos de los valores? Explica.
-
 #[tu código aquí]
+print(a)
+print(d)
+
+#Si. D es la misma matriz que a con un +1 en cada elemento de la matriz.
 
 
 #12. Multiplica a y c. Asigna el resultado a e.
 
 #[tu código aquí]
+e = a * c
 
 
 #13. ¿Es e igual a a? ¿Por qué sí o por qué no?
 
 #[tu código aquí]
+equal_result = (e == a)
+print("Equality Comparison Result:")
+print(equal_result)
+#Por que c es una matriz con la misma shape que a y todos sus elementos son "1" por lo que al multiplicar las matrices a y c, e es igual a a.
 
 
 
